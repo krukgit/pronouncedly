@@ -1,0 +1,15 @@
+<% if controller.devise_controller? && resource.present? && resource.errors.any? %>
+  <%= content_tag :p, class: flash_class(:error), style: "margin-bottom: 0" do %>
+    <%= resource.errors.full_messages.to_sentence %>
+  <% end %>
+<% end %>
+
+<% if !flash.empty? %>
+    <div id="flash">
+      <% flash.keys.each do |k| %>
+          <div class="alert alert-<%= k %>">
+            <%= flash[k] %>
+          </div>
+      <% end %>
+    </div>
+<% end %>
