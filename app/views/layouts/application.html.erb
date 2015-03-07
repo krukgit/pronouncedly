@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pronouncedly</title>
+  <title>
+    <%= content_for?(:title) ? yield(:title) : 'Pronouncedly' %>
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3.0, user-scalable=yes">
+  <meta name="description" content="Pronouncedly is your personal foreign language pronunciation guide">
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <% if Rails.application.assets.find_asset "#{params[:controller]}.css" %>
+    <%= stylesheet_link_tag params[:controller], media: 'all' %>
+  <% end %>
+
   <%= javascript_include_tag 'application' %>
+  <% if Rails.application.assets.find_asset "#{params[:controller]}.js" %>
+    <%= javascript_include_tag params[:controller] %>
+  <% end %>
+
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<body>
+  <%= render 'layouts/navbar' %>
+  <div class="wrapper">
+    <div class="container">
+      <%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>
