@@ -1,0 +1,2 @@
+class AudioRecording < Recording
+end

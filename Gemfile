@@ -17,6 +17,9 @@ gem 'bootstrap-sass'
 # API
 gem 'jbuilder', '~> 2.0'
 
+# Data
+gem 'paperclip'
+
 # Docs
 gem 'sdoc', '~> 0.4.0', group: :doc
 
